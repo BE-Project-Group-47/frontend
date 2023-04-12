@@ -24,10 +24,18 @@ function LoanDetails() {
           <input
             type="text"
             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:outline-none dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter loan amount*"
+            placeholder="Enter loan amount"
           />
         </div>
-        <div className="text-2xl col-span-4 my-5">Tenure of the Loan</div>
+        <div className="text-2xl col-span-4 mb-2">Other Details</div>
+        <div className="text-right">Purpose</div>
+        <div className="col-span-3">
+          <input
+            type="text"
+            class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:outline-none dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Mention the Purpose of the loan"
+          />
+        </div>
         <div className="text-right">Tenure</div>
         <div className="">
           <input

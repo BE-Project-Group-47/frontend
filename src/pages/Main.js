@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "../App.css";
 import PersonalDetails from "../components/MainPage/PersonalDetails";
-import BankStatements from "../components/MainPage/BankStatements";
 import FinancialDetails from "../components/MainPage/FinancialDetails";
 import LoanDetails from "../components/MainPage/LoanDetails";
 
@@ -18,8 +18,7 @@ function Main() {
 
   const [page, setPage] = useState(1);
   const onProceedhandler = () => {
-    if (page === 1) setPage(page + 2);
-    else setPage(page + 1);
+    if (page !== 3) setPage(page + 1);
   };
 
   return (
@@ -43,7 +42,7 @@ function Main() {
 
         {page > 1 ? hr_without_grad : hr_with_gradient}
 
-        {/* <button
+        <button
           className={
             "text-white text-sm font-bold py-2 px-4 rounded-full " +
             (page > 2
@@ -56,14 +55,14 @@ function Main() {
             setPage(2);
           }}
         >
-          Legal Docs and Bank Statements
+          Financial Details
         </button>
 
         {page > 2
           ? hr_without_grad
           : page === 2
           ? hr_with_gradient
-          : hr_without_color} */}
+          : hr_without_color}
 
         <button
           className={
@@ -78,28 +77,6 @@ function Main() {
             setPage(3);
           }}
         >
-          Financial Details
-        </button>
-
-        {page > 3
-          ? hr_without_grad
-          : page === 3
-          ? hr_with_gradient
-          : hr_without_color}
-
-        <button
-          className={
-            "text-white text-sm font-bold py-2 px-4 rounded-full " +
-            (page > 4
-              ? "bg-green-400"
-              : page === 4
-              ? "bg-blue-400"
-              : "bg-slate-700")
-          }
-          onClick={() => {
-            setPage(4);
-          }}
-        >
           Loan Amount and Tenure
         </button>
       </div>
@@ -108,19 +85,28 @@ function Main() {
           {page === 1 ? (
             <PersonalDetails />
           ) : page === 2 ? (
-            <BankStatements />
-          ) : page === 3 ? (
             <FinancialDetails />
           ) : (
             <LoanDetails />
           )}
         </div>
-        <button
-          className="w-3/4 py-[2px] text-white bg-green-400 self-end rounded-md"
-          onClick={onProceedhandler}
-        >
-          <div className="text-center font-bold">PROCEED</div>
-        </button>
+        {page === 3 ? (
+          <NavLink
+            className="w-3/4 py-[2px] text-white bg-green-400 self-end rounded-md"
+            onClick={onProceedhandler}
+            to="/submission"
+          >
+            <div className="text-center font-bold">PROCEED</div>
+          </NavLink>
+        ) : (
+          <button
+            className="w-3/4 py-[2px] text-white bg-green-400 self-end rounded-md"
+            onClick={onProceedhandler}
+            name=""
+          >
+            <div className="text-center font-bold">PROCEED</div>
+          </button>
+        )}
       </div>
     </div>
   );
