@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import PersonalDetails from "../components/MainPage/PersonalDetails";
 import BankStatements from "../components/MainPage/BankStatements";
-import FinancialDetails from "../components/MainPage/FinancianDetails";
+import FinancialDetails from "../components/MainPage/FinancialDetails";
 import LoanDetails from "../components/MainPage/LoanDetails";
 
 function Main() {
