@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
-function PersonalDetails() {
+const PersonalDetails = (props) => {
+  const [age, setAge] = useState(24);
+  const handleChange = (e) => {
+    setAge(e.target.value);
+    props.onSubmit(e.target.value);
+  };
+
   return (
     <div className="w-full h-80 my-5">
       <div className="grid grid-cols-4 gap-5 gap-y-10 items-center text-white">
@@ -19,6 +25,8 @@ function PersonalDetails() {
             type="text"
             class="block w-full p-2  border rounded-lg  sm:text-xs bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="eg. 53"
+            onInput={handleChange}
+            value={age}
           />
         </div>
 
@@ -50,6 +58,6 @@ function PersonalDetails() {
       </div>
     </div>
   );
-}
+};
 
 export default PersonalDetails;

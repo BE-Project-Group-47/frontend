@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-function FinancialDetails() {
+const FinancialDetails = (props) => {
+  const [income, setIncome] = useState(0);
+  const [length, setLength] = useState(0);
+
+  const income_inp = document.getElementById("income_input");
+  const length_inp = document.getElementById("length_input");
+
+  const handleChange = (e) => {
+    if (income_inp !== null && length_inp !== null) {
+      props.onSubmit(income_inp.value, length_inp.value);
+    }
+  };
+
   return (
     <div className="w-full h-80 my-5">
       <div className="flex flex-col space-y-10 text-white">
@@ -9,8 +21,13 @@ function FinancialDetails() {
           <div>Income</div>
           <input
             type="text"
+            id="income_input"
             class="block w-full p-2 border rounded-lg sm:text-xs bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             placeholder="eg. 60,000"
+            onChange={(e) => {
+              setIncome(e.target.value);
+              handleChange(e);
+            }}
           />
           <div className="flex justify-between pt-5">
             <div className="space-y-5">
@@ -45,6 +62,11 @@ function FinancialDetails() {
               <div>Employment Length</div>
               <input
                 type="text"
+                id="length_input"
+                onChange={(e) => {
+                  setLength(e.target.value);
+                  handleChange(e);
+                }}
                 class="block w-full p-2 border rounded-lg sm:text-xs bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 placeholder="eg. 3yrs"
               />
@@ -54,6 +76,6 @@ function FinancialDetails() {
       </div>
     </div>
   );
-}
+};
 
 export default FinancialDetails;
