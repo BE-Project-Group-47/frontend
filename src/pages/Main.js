@@ -130,7 +130,7 @@ function Main() {
           <NavLink
             className="w-3/4 py-[2px] text-white bg-green-400 self-end rounded-md"
             onClick={async (e) => {
-              const response = await fetch("http://127.0.0.1:8000/add/", {
+              const response = await fetch("http://127.0.0.1:8000/add-data/", {
                 method: "POST", // or 'PUT'
                 mode: "no-cors",
                 headers: {
