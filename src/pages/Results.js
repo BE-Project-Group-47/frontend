@@ -3,23 +3,23 @@ import ReactEcharts from "echarts-for-react";
 
 function Results() {
   // classiifiers goes here
-  let algo = [
-    "knn",
-    "naive bayes",
-    "sgd",
-    "logistic reg",
-    "decision trees",
-    "svm",
-    "mlp",
-  ];
+  let algo = ["logistic reg", "knn", "decision trees", "naive bayes", "mlp"];
   let perf_metrics = [
     "accuracy",
-    "f1 score",
     "recall",
+    "f1-score",
     "precision",
-    "auc roc score",
-    "proba x",
+    "roc_auc_score",
+    "result",
   ];
+
+  const my_data = {
+    lgr: [84.13, 45.74, 56.05, 72.35, 85.46, 0],
+    knn: [85.22, 40.19, 54.6, 85.11, 87.65, 1],
+    dt: [92.25, 70.81, 80.16, 92.34, 90.8, 0],
+    nb: [81.81, 64.15, 60.94, 58.03, 84.6, 0],
+    mlp: [91.23, 68.96, 77.68, 88.91, 91.11, 0],
+  };
 
   // Their value in the respective order goes here
 
@@ -88,7 +88,7 @@ function Results() {
         emphasis: {
           focus: "series",
         },
-        data: [320, 332, 301, 334, 390, 200],
+        data: my_data["lgr"],
       },
       {
         name: algo[1],
@@ -97,7 +97,7 @@ function Results() {
         emphasis: {
           focus: "series",
         },
-        data: [220, 182, 191, 234, 290, 290],
+        data: my_data["knn"],
       },
       {
         name: algo[2],
@@ -106,7 +106,7 @@ function Results() {
         emphasis: {
           focus: "series",
         },
-        data: [150, 232, 201, 154, 190, 300],
+        data: my_data["dt"],
       },
       {
         name: algo[3],
@@ -115,7 +115,7 @@ function Results() {
         emphasis: {
           focus: "series",
         },
-        data: [98, 77, 101, 99, 40, 190],
+        data: my_data["nb"],
       },
       {
         name: algo[4],
@@ -124,25 +124,7 @@ function Results() {
         emphasis: {
           focus: "series",
         },
-        data: [98, 77, 101, 99, 40, 77],
-      },
-      {
-        name: algo[5],
-        type: "bar",
-        label: labelOption,
-        emphasis: {
-          focus: "series",
-        },
-        data: [98, 77, 101, 99, 40, 300],
-      },
-      {
-        name: algo[6],
-        type: "bar",
-        label: labelOption,
-        emphasis: {
-          focus: "series",
-        },
-        data: [98, 77, 101, 99, 40, 250],
+        data: my_data["mlp"],
       },
     ],
   };
