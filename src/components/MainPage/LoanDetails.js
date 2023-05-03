@@ -8,25 +8,25 @@ const LoanDetails = (props) => {
   const [tenure, setTenure] = useState();
   const [interest, setInterest] = useState();
 
-  const amount_inp = document.getElementById("amount_inp");
-  const intent_inp = document.getElementById("intent_inp");
-  const tenure_inp = document.getElementById("tenure_inp");
-  const interest_inp = document.getElementById("interest_inp");
-
   const handleChange = (e) => {
+    const amount_inp = document.getElementById("amount_inp");
+    const intent_inp = document.getElementById("intent_inp");
+    const tenure_inp = document.getElementById("tenure_inp");
+    const interest_inp = document.getElementById("interest_inp");
     if (
       amount_inp !== null &&
       intent_inp !== null &&
       tenure_inp !== null &&
       interest_inp !== null
     ) {
+      console.log("not null");
       props.onSubmit(
         amount_inp.value,
         intent_inp.value,
         tenure_inp.value,
         interest_inp.value
       );
-    }
+    } else console.log("null");
   };
   return (
     <div className="w-full h-80 my-5 ">
