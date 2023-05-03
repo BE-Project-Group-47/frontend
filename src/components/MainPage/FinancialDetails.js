@@ -4,13 +4,12 @@ const FinancialDetails = (props) => {
   const [income, setIncome] = useState(0);
   const [length, setLength] = useState(0);
 
-  const income_inp = document.getElementById("income_input");
-  const length_inp = document.getElementById("length_input");
-
   const handleChange = (e) => {
+    const income_inp = document.getElementById("income_input");
+    const length_inp = document.getElementById("length_input");
     if (income_inp !== null && length_inp !== null) {
       props.onSubmit(income_inp.value, length_inp.value);
-    }
+    } else console.log("null");
   };
 
   return (

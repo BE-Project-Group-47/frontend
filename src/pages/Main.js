@@ -4,8 +4,12 @@ import "../App.css";
 import PersonalDetails from "../components/MainPage/PersonalDetails";
 import FinancialDetails from "../components/MainPage/FinancialDetails";
 import LoanDetails from "../components/MainPage/LoanDetails";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
+  const navigate = useNavigate();
+  // const { data, setData } = useState();
   const hr_with_gradient = (
     <hr className="w-20 border-none h-[2px] bg-gradient-to-r from-cyan-600"></hr>
   );
@@ -23,38 +27,51 @@ function Main() {
     // get the data from input fields
   };
 
-  let data = {
-    age: 24,
-    income: 24000,
-    employment_length: 4.5,
-    loan_amount: 25000,
-    loan_intent: "axy",
-    loan_grade: "C",
-    loan_intrest: 0.7,
-    loan_status: 0,
-    loan_percent_income: 20.1,
-    cb_person_default_on_file: "N",
-    cb_credit_history_len: 0,
-  };
+  // let data = {
+  //   age: 24,
+  //   income: 24000,
+  //   employment_length: 4.5,
+  //   loan_amount: 25000,
+  //   loan_intent: "axy",
+  //   loan_grade: "C",
+  //   loan_intrest: 0.7,
+  //   loan_status: 0,
+  //   loan_percent_income: 20.1,
+  //   cb_person_default_on_file: "N",
+  //   cb_credit_history_len: 0,
+  // };
+  const formData = new FormData();
+  formData.append("age", 24);
+  formData.append("income", 24000);
+  formData.append("employment_length", 4.5);
+  formData.append("loan_amount", 25000);
+  formData.append("loan_intent", "axy");
+  formData.append("loan_grade", "C");
+  formData.append("loan_intrest", 0.7);
+  formData.append("loan_status", 0);
+  formData.append("loan_percent_income", 20.1);
+  formData.append("cb_person_default_on_file", "N");
+  formData.append("cb_credit_history_len", 0);
+
   const getPersonalDet = (age) => {
-    data["age"] = age;
+    // data["age"] = age;
+    formData.set("age", age);
   };
   const getFinancialDet = (income, length) => {
-    data["income"] = income;
-    data["employment_length"] = length;
+    // data["income"] = income;
+    // data["employment_length"] = length;
+    formData.set("income", income);
+    formData.set("employment_length", length);
   };
   const getLoanDet = (amount, intent, tenure, interest) => {
-    data["loan_amount"] = amount;
-    data["loan_intent"] = intent;
-    data["loan_intrest"] = interest;
-    // Apparently we dont want tenure?????
-    console.log(data);
-  };
-  const onSubmitHandler = async (e) => {
-    // const sub_ = { subs };
+    // data["loan_amount"] = amount;
+    // data["loan_intent"] = intent;
+    // data["loan_intrest"] = interest;
+    formData.set("loan_amount", amount);
+    formData.set("loan_intent", intent);
+    formData.set("loan_intrest", interest);
 
-    console.log(JSON.stringify(data));
-    e.preventDefault();
+    // Apparently we dont want tenure?????
   };
 
   return (
@@ -127,22 +144,28 @@ function Main() {
           )}
         </div>
         {page === 3 ? (
-          <NavLink
+          <button
             className="w-3/4 py-[2px] text-white bg-green-400 self-end rounded-md"
             onClick={async (e) => {
-              const response = await fetch("http://127.0.0.1:8000/add-data/", {
-                method: "POST", // or 'PUT'
-                mode: "no-cors",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-              });
+              const config = {
+                headers: { "content-type": "multipart/form-data" },
+              };
+
+              axios
+                .post("https://backend2-production-5239.up.railway.app/add-data/", formData, config)
+                .then((response) => {
+                  console.log(response);
+                  const data = response.data
+                  navigate("/results", { state: { results: data } });    
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+              
             }}
-            to="/submission"
           >
             <div className="text-center font-bold">PROCEED</div>
-          </NavLink>
+          </button>
         ) : (
           <button
             className="w-3/4 py-[2px] text-white bg-green-400 self-end rounded-md"
