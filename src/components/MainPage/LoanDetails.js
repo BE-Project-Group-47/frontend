@@ -34,15 +34,15 @@ const LoanDetails = (props) => {
         <div className="text-2xl col-span-4">Loan Amount</div>
         <div className="col-span-3 col-start-2">
           <div className="w-full space-y-3">
-            <div className="w-full relative bg-slate-100 h-2 rounded-md bg-gradient-to-r from-red-500 via-yellow-400 to-green-400">
+            {/* <div className="w-full relative bg-slate-100 h-2 rounded-md bg-gradient-to-r from-red-500 via-yellow-400 to-green-400">
               <Draggable axis="x">
                 <div className="w-4 h-4 bg-cyan-400 absolute -top-1/2 rounded-full"></div>
               </Draggable>
-            </div>
-            <div className="flex justify-between text-sm text-slate-100">
+            </div> */}
+            {/* <div className="flex justify-between text-sm text-slate-100">
               <div>500k</div>
               <div>5000k</div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="text-right">Amount</div>

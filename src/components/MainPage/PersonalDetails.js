@@ -16,7 +16,7 @@ const PersonalDetails = (props) => {
           <input
             type="text"
             class="block w-full p-2  border rounded-lg  sm:text-xs bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            placeholder="eg. Jane Goswami Doe"
+            placeholder="eg. Jane Doe"
           />
         </div>
         <div className="text-right">Age</div>
@@ -43,7 +43,7 @@ const PersonalDetails = (props) => {
           <input
             type="text"
             class="block w-full p-2  border rounded-lg  sm:text-xs bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            placeholder="eg. +91 7884612221"
+            placeholder="enter 10-digit no."
           />
         </div>
 
